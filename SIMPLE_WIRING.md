@@ -36,7 +36,7 @@ Each button connects between a GPIO pin and GND (no resistors needed - using int
 |---------------|------------|-----------------------------------|
 | Power         | 13         | Turn soundbar on/off              |
 | Input         | 12         | Switch HDMI/ARC/Optical/etc       |
-| Speaker Level | 27         | Adjust rear speaker volume        |
+| Speaker Level | 27         | Cycle through and adjust individual speaker levels |
 | EQ Setting    | 26         | Cycle through sound modes         |
 | Menu          | 25         | Open 3 dots menu                  |
 | Settings      | 33         | Open settings menu                |
