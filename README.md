@@ -99,15 +99,15 @@ See [LG_SP7R_IR_CODES.txt](LG_SP7R_IR_CODES.txt) for Arduino code format.
 ```
 LG-SP7R-ESP32-Remote/
 ├── src/
-│   ├── main.cpp              # 6-button remote code (default)
-│   └── main_full_15button.cpp # Full 15-button remote code
-├── LG_SP7R_IR_CODES.txt     # Complete IR code documentation
-├── LG_SP7R_IRDB.csv         # IRDB format for database submission
-├── LIRC_FORMAT.conf          # LIRC configuration file
-├── SIMPLE_WIRING.md          # Wiring guide for 6-button version
-├── WIRING_GUIDE.md           # Full 15-button wiring guide
-├── IRDB_SUBMISSION_GUIDE.md  # How to submit codes to databases
-└── platformio.ini            # PlatformIO configuration
+│   ├── main.cpp              # Arduino code for simplified 6-button remote (Power, Input, Speaker Level, EQ, Menu, Settings)
+│   └── main_full_15button.cpp # Arduino code for complete 15-button remote with all original remote functions
+├── LG_SP7R_IR_CODES.txt     # All 15 captured IR codes in NEC protocol format with hex/decimal values
+├── LG_SP7R_IRDB.csv         # IR codes formatted as CSV for submission to IRDB community database
+├── LIRC_FORMAT.conf          # IR codes in LIRC configuration format for Linux Infrared Remote Control
+├── SIMPLE_WIRING.md          # Complete wiring guide for 6-button version with breadboard layout and GPIO pin assignments
+├── WIRING_GUIDE.md           # Full wiring guide for 15-button version including battery power circuit and 3D case recommendations
+├── IRDB_SUBMISSION_GUIDE.md  # Step-by-step instructions for contributing IR codes to public databases
+└── platformio.ini            # PlatformIO build configuration with ESP32 board settings and IRremote library dependency
 ```
 
 ## Battery Life
