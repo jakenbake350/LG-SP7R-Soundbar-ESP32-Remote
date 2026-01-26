@@ -1,5 +1,5 @@
-LG SPD7R Soundbar IR Remote Codes
-Model: LG SPD7R 7.1 Channel Soundbar
+LG SP7R Soundbar IR Remote Codes
+Model: LG SP7R 7.1 Channel Soundbar
 Remote Model: AKB76038001
 Protocol: NEC
 Address: 0x2C (44 decimal)
@@ -64,7 +64,7 @@ Notes
 - All codes use NEC protocol
 - Device address is 0x2C (not the typical 0x04 for LG TVs)
 - All codes are 32-bit
-- Tested and verified working on LG SPD7R soundbar
+- Tested and verified working on LG SP7R soundbar
 - Captured using ESP32 with IRremote library v4.5.0
 - Date captured: 2026-01-25
 

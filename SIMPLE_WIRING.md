@@ -1,4 +1,4 @@
-# 4-Button LG SPD7R Remote - Simple Wiring Guide
+# 6-Button LG SP7R Remote - Simple Wiring Guide
 
 ## What You Need
 
@@ -6,7 +6,7 @@
 - ESP32 Dev Board (your spare one)
 - IR LED (950nm, 5mm)
 - 100Ω resistor (for IR LED)
-- 4x Tactile push buttons
+- 6x Tactile push buttons
 - Breadboard and jumper wires (for testing)
 - Optional: 500mAh LiPo + TP4056 charger (for battery power)
 
@@ -36,8 +36,10 @@ Each button connects between a GPIO pin and GND (no resistors needed - using int
 |---------------|------------|-----------------------------------|
 | Power         | 13         | Turn soundbar on/off              |
 | Input         | 12         | Switch HDMI/ARC/Optical/etc       |
+| Speaker Level | 27         | Adjust rear speaker volume        |
 | EQ Setting    | 26         | Cycle through sound modes         |
-| Speaker Level | 25         | Adjust rear speaker volume        |
+| Menu          | 25         | Open 3 dots menu                  |
+| Settings      | 33         | Open settings menu                |
 
 ### Breadboard Layout (Top View)
 ```

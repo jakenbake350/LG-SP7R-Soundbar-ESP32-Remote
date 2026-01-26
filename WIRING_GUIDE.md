@@ -1,4 +1,4 @@
-# LG SPD7R ESP32 Remote - Wiring Guide
+# LG SP7R ESP32 Remote - Wiring Guide
 
 ## Components Needed
 

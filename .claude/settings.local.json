@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(code --list-extensions)",
+      "Bash(where:*)",
+      "Bash(python -m platformio run:*)",
+      "Bash(dir \"$env:USERPROFILE\\\\.platformio\\\\penv\\\\Scripts\\\\platformio.exe\")",
+      "Bash(~/.platformio/penv/Scripts/platformio.exe run --target upload)",
+      "Bash(~/.platformio/penv/Scripts/platformio.exe device monitor)",
+      "Bash(python capture_codes.py:*)",
+      "Bash(pip install:*)",
+      "Bash(~/.platformio/penv/Scripts/platformio.exe device monitor --raw)",
+      "Bash(taskkill:*)",
+      "Bash(pio run:*)",
+      "Bash(platformio run:*)",
+      "Bash(code .)",
+      "Bash(\"$HOME/.platformio/penv/Scripts/pio.exe\" run)",
+      "Bash(mode)",
+      "Bash(findstr:*)",
+      "Bash(\"$HOME/.platformio/penv/Scripts/pio.exe\" device list)",
+      "Bash(\"$HOME/.platformio/penv/Scripts/pio.exe\" run --target upload --upload-port COM3)",
+      "Bash(\"$HOME/.platformio/penv/Scripts/pio.exe\" device monitor --port COM3 --baud 115200)",
+      "Bash(\"$HOME/.platformio/penv/Scripts/pio.exe\" device monitor --port COM3 --baud 115200 --echo --eol LF --filter send_on_enter --raw)",
+      "Bash(python:*)",
+      "Bash(powershell:*)",
+      "Bash(tasklist:*)",
+      "Bash(start cmd /k \"python remote.py\")",
+      "Bash(\"$HOME/.platformio/penv/Scripts/pio.exe\" device monitor --port COM3 --baud 115200 --eol LF --echo)",
+      "Bash(/c/Users/jaket/.platformio/penv/Scripts/pio.exe run --target upload --upload-port COM3)",
+      "Bash(dir:*)",
+      "Bash(ren:*)",
+      "Bash(C:Usersjaket.platformiopenvScriptsplatformio.exe run -t upload)",
+      "Bash(\"/c/Users/jaket/.platformio/penv/Scripts/platformio.exe\" run -t upload)",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}

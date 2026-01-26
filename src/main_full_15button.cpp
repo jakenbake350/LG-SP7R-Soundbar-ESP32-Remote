@@ -26,7 +26,7 @@
 #define SLEEP_TIMEOUT_MS 10000  // Sleep after 10 seconds of inactivity
 RTC_DATA_ATTR int bootCount = 0;
 
-// Captured IR codes for LG SPD7R soundbar (NEC protocol, address 0x2C)
+// Captured IR codes for LG SP7R soundbar (NEC protocol, address 0x2C)
 struct ButtonMap {
   uint8_t pin;
   uint8_t address;
@@ -83,7 +83,7 @@ void setup() {
 
   bootCount++;
   Serial.println("\n========================================");
-  Serial.println("  LG SPD7R Full Remote - ACTIVE");
+  Serial.println("  LG SP7R Full Remote - ACTIVE");
   Serial.println("========================================");
   Serial.print("Boot #");
   Serial.println(bootCount);
