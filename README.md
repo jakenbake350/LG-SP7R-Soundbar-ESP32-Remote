@@ -8,7 +8,7 @@ This project provides a complete replacement for the LG SPD7R soundbar remote (M
 
 ## Features
 
-- **4-Button Simplified Remote** - Power, Input, EQ Setting, and Speaker Level controls
+- **Two Versions Available** - 4-button simplified OR full 15-button remote
 - **Deep Sleep Mode** - 3-6 months battery life on a 500mAh LiPo
 - **All 15 Button Codes Captured** - Complete IR code database included
 - **Battery Powered** - USB-C rechargeable with TP4056 module
@@ -19,7 +19,7 @@ This project provides a complete replacement for the LG SPD7R soundbar remote (M
 - ESP32 Development Board
 - IR LED (950nm, 5mm)
 - 100Ω resistor
-- 4x tactile push buttons
+- 4x tactile push buttons (simplified version) OR 15x buttons (full version)
 - 500mAh 3.7V LiPo battery (optional)
 - TP4056 USB-C charging module (optional)
 - Breadboard and jumper wires for testing
@@ -29,17 +29,30 @@ This project provides a complete replacement for the LG SPD7R soundbar remote (M
 ### 1. Install PlatformIO
 Install [PlatformIO](https://platformio.org/) or use the VS Code extension.
 
-### 2. Clone and Upload
+### 2. Clone and Choose Version
 ```bash
 git clone https://github.com/jakenbake350/LG-SPD7R-ESP32-Remote.git
 cd LG-SPD7R-ESP32-Remote
+
+# For 4-button simplified version (default)
+# main.cpp is already set up - just upload!
+
+# For full 15-button version
+# Copy the full version to main.cpp:
+cp src/main_full_15button.cpp src/main.cpp
+```
+
+### 3. Upload to ESP32
+```bash
 pio run -t upload
 ```
 
-### 3. Wire the Hardware
-See [SIMPLE_WIRING.md](SIMPLE_WIRING.md) for complete wiring instructions.
+### 4. Wire the Hardware
 
-**Basic connections:**
+**For 4-button version:** See [SIMPLE_WIRING.md](SIMPLE_WIRING.md)
+**For 15-button version:** See [WIRING_GUIDE.md](WIRING_GUIDE.md)
+
+**Basic connections (4-button):**
 - GPIO 4 → 100Ω resistor → IR LED (+)
 - IR LED (-) → GND
 - GPIO 13 → Power button → GND
@@ -47,7 +60,7 @@ See [SIMPLE_WIRING.md](SIMPLE_WIRING.md) for complete wiring instructions.
 - GPIO 26 → EQ button → GND
 - GPIO 25 → Speaker Level button → GND
 
-### 4. Test
+### 5. Test
 Point the IR LED at your soundbar and press a button!
 
 ## IR Code Database
@@ -86,7 +99,8 @@ See [LG_SPD7R_IR_CODES.txt](LG_SPD7R_IR_CODES.txt) for Arduino code format.
 ```
 LG-SPD7R-ESP32-Remote/
 ├── src/
-│   └── main.cpp              # 4-button remote code (active)
+│   ├── main.cpp              # 4-button remote code (default)
+│   └── main_full_15button.cpp # Full 15-button remote code
 ├── LG_SPD7R_IR_CODES.txt     # Complete IR code documentation
 ├── LG_SPD7R_IRDB.csv         # IRDB format for database submission
 ├── LIRC_FORMAT.conf          # LIRC configuration file
@@ -104,16 +118,21 @@ With deep sleep enabled (10-second timeout):
 - **Deep Sleep:** ~10µA
 - **Estimated battery life:** 3-6 months per charge (500mAh LiPo)
 
-## Versions
+## Two Versions Available
 
-### Simple Remote (Current)
-- 4 buttons: Power, Input, EQ, Speaker Level
+### Simple Remote (main.cpp - Default)
+- **4 buttons:** Power, Input, EQ, Speaker Level
 - Perfect for daily use
 - Only controls functions not available on TV remote
+- Minimal wiring, easy breadboard build
+- See `SIMPLE_WIRING.md` for wiring guide
 
-### Full Remote
-- All 15 buttons from original remote
-- See `WIRING_GUIDE.md` for full version
+### Full Remote (main_full_15button.cpp)
+- **All 15 buttons** from original remote
+- Complete replacement for lost remote
+- Includes: Power, Mute, Input, Volume ±, EQ, Bluetooth, Menu, Speaker Level, Settings, Navigation (Up/Down/Left/Right/Enter)
+- See `WIRING_GUIDE.md` for full wiring guide
+- To use: `cp src/main_full_15button.cpp src/main.cpp` then upload
 
 ## Contributing to IR Databases
 
