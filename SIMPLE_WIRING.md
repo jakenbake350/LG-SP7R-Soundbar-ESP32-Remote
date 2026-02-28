@@ -49,8 +49,10 @@ ESP32 Board
 │  [3.3V]  [GND]  │───┐
 │   [13]          │   │
 │   [12]          │   │  All buttons share
-│   [26]          │   │  common GND
+│   [27]          │   │  common GND
+│   [26]          │   │
 │   [25]          │   │
+│   [33]          │   │
 │   [4]───────────│───┼─── IR LED (+) ──[ 100Ω ]── 3.3V
 │                 │   │    IR LED (-) ──────────── GND
 └─────────────────┘   │
@@ -62,10 +64,17 @@ ESP32 Board
   Input (12 to GND)   │
                       │
   [BTN3]──────────────┤
-  EQ (26 to GND)      │
+  Speaker Level       │
+  (27 to GND)         │
                       │
   [BTN4]──────────────┤
-  Speaker (25 to GND) │
+  EQ (26 to GND)      │
+                      │
+  [BTN5]──────────────┤
+  Menu (25 to GND)    │
+                      │
+  [BTN6]──────────────┤
+  Settings (33 to GND)│
                       │
                     [GND]
 ```
@@ -85,7 +94,7 @@ IR LED short leg (-) → GND rail
 
 ### 3. Wire the buttons
 For each button:
-- One leg → GPIO pin (13, 12, 26, or 25)
+- One leg → GPIO pin (13, 12, 27, 26, 25, or 33)
 - Other leg → GND rail
 
 ### 4. Upload the code

@@ -57,8 +57,10 @@ pio run -t upload
 - IR LED (-) → GND
 - GPIO 13 → Power button → GND
 - GPIO 12 → Input button → GND
+- GPIO 27 → Speaker Level button → GND
 - GPIO 26 → EQ button → GND
-- GPIO 25 → Speaker Level button → GND
+- GPIO 25 → Menu button → GND
+- GPIO 33 → Settings button → GND
 
 ### 5. Test
 Point the IR LED at your soundbar and press a button!
