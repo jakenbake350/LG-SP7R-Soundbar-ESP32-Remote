@@ -18,7 +18,9 @@ This project provides a complete replacement for the LG SP7R soundbar remote (Mo
 
 - ESP32 Development Board
 - IR LED (950nm, 5mm)
-- 100Ω resistor
+- NPN transistor (2N2222A or similar)
+- 100Ω resistor (IR LED current limit)
+- 1kΩ resistor (transistor base)
 - 6x tactile push buttons (simplified version) OR 15x buttons (full version)
 - 500mAh 3.7V LiPo battery (optional)
 - TP4056 USB-C charging module (optional)
@@ -53,8 +55,8 @@ pio run -t upload
 **For 15-button version:** See [WIRING_GUIDE.md](WIRING_GUIDE.md)
 
 **Basic connections (6-button):**
-- GPIO 4 → 100Ω resistor → IR LED (+)
-- IR LED (-) → GND
+- 3.3V → 100Ω → IR LED (+), IR LED (-) → NPN Collector
+- GPIO 4 → 1kΩ → NPN Base, NPN Emitter → GND
 - GPIO 13 → Power button → GND
 - GPIO 12 → Input button → GND
 - GPIO 27 → Speaker Level button → GND

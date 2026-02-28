@@ -5,7 +5,9 @@
 ### Electronics
 - ESP32 Dev Board (your spare one)
 - IR LED (950nm, 5mm)
-- 100Ω resistor (for IR LED)
+- NPN transistor (2N2222A or similar)
+- 100Ω resistor (IR LED current limit)
+- 1kΩ resistor (transistor base)
 - 6x Tactile push buttons
 - Breadboard and jumper wires (for testing)
 - Optional: 500mAh LiPo + TP4056 charger (for battery power)
@@ -14,15 +16,23 @@
 
 ## IR LED Wiring
 
-**Simple circuit (perfect for testing):**
+The ESP32's GPIO pins can only safely supply ~12mA, but IR LEDs need 20-50mA for good range. A transistor lets GPIO 4 switch higher current without stressing the pin.
+
 ```
-ESP32 GPIO 4 ----[ 100Ω resistor ]----[IR LED +]
-                                       [IR LED -]---- GND
+3.3V ──[ 100Ω ]──── IR LED (+) long leg
+                    IR LED (-) short leg ──── NPN Collector
+GPIO 4 ──[ 1kΩ ]── NPN Base
+                    NPN Emitter ──────────── GND
 ```
 
 **IR LED Polarity:**
-- Long leg = + (Anode)
-- Short leg = - (Cathode, to GND)
+- Long leg = + (Anode) → 100Ω → 3.3V
+- Short leg = - (Cathode) → NPN Collector
+
+**2N2222A Pinout** (flat side facing you, pins down):
+- Left = Emitter → GND
+- Middle = Base → 1kΩ → GPIO 4
+- Right = Collector → IR LED (-)
 
 ---
 
@@ -53,8 +63,10 @@ ESP32 Board
 │   [26]          │   │
 │   [25]          │   │
 │   [33]          │   │
-│   [4]───────────│───┼─── IR LED (+) ──[ 100Ω ]── 3.3V
-│                 │   │    IR LED (-) ──────────── GND
+│   [4]───────────│───┼─── [1kΩ] ── NPN Base
+│  [3.3V]         │   │             NPN Collector ── IR LED (-)
+│                 │   │    3.3V ──[ 100Ω ]── IR LED (+)
+│                 │   │             NPN Emitter ──── GND
 └─────────────────┘   │
                       │
   [BTN1]──────────────┤
@@ -86,10 +98,12 @@ ESP32 Board
 ### 1. Insert ESP32 into breadboard
 - Make sure USB port is accessible
 
-### 2. Wire the IR LED
+### 2. Wire the IR LED (with transistor)
 ```
-GPIO 4 → 100Ω resistor → IR LED long leg (+)
-IR LED short leg (-) → GND rail
+3.3V → 100Ω resistor → IR LED long leg (+)
+IR LED short leg (-) → NPN Collector (right pin, flat side facing you)
+GPIO 4 → 1kΩ resistor → NPN Base (middle pin)
+NPN Emitter (left pin) → GND
 ```
 
 ### 3. Wire the buttons
@@ -99,9 +113,8 @@ For each button:
 
 ### 4. Upload the code
 - Open this project in PlatformIO
-- Rename `src/main.cpp` to `src/main_learning.cpp` (to save it)
-- Copy `src/simple_remote.cpp` to `src/main.cpp`
-- Click Upload
+- `src/main.cpp` is already the 6-button remote — just upload
+- Click Upload (or `pio run -t upload`)
 
 ### 5. Test!
 - Open Serial Monitor (115200 baud)
@@ -172,9 +185,9 @@ TP4056 OUT- ─── ESP32 GND
 - Try pressing harder (some buttons need firm press)
 
 **IR LED not working:**
-- Check polarity (long leg to resistor, short leg to GND)
+- Check polarity (long leg to 100Ω/3.3V, short leg to Collector)
+- Verify transistor orientation (flat side facing you: E-B-C left to right)
 - Test with phone camera (you should see purple light when button pressed)
-- Try reducing resistor to 68Ω for stronger signal
 
 **Soundbar doesn't respond:**
 - Point LED directly at soundbar IR sensor (usually front panel)
